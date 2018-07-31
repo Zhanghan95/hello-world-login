@@ -4,19 +4,19 @@ import { Http, Headers } from '../../node_modules/@angular/http';
 @Injectable({
   providedIn: 'root'
 })
-export class SignupService {
+export class LoginService {
 
   url = "http://localhost:8080";
 
   constructor(private http: Http) { }
 
-  createUser(value) {
+  loginUser(value) {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
 
-    return this.http.post(this.url+'/register', 
-                  JSON.stringify(value),
-                  {headers: headers});
+    return this.http.post(this.url+'/login', 
+                        JSON.stringify(value),
+                        {headers: headers});
   }
 }

@@ -1,7 +1,7 @@
 import { PostsService } from './posts.service';
 import { CoursesComponent } from './courses.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { HttpModule } from '@angular/http'
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -12,6 +12,8 @@ import { SignupComponent } from './signup/signup.component';
 import { SignupService } from './signup.service';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { LoginService } from './login.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { HomeComponent } from './home/home.component';
     PostsComponent,
     SignupComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -28,12 +31,14 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
+      { path: 'signup', component: SignupComponent },
       { path: 'login', component: LoginComponent },
-      { path: '**', component: SignupComponent }
+      { path: 'welcome', component: WelcomeComponent },
+      { path: '**', component: HomeComponent }
       
     ])
   ],
-  providers: [PostsService, SignupService],
+  providers: [PostsService, SignupService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
